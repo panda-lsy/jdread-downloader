@@ -41,7 +41,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: https://github.com/panda-lsy/jdread-downloader
-        asset_path: target/*.jar  # 根据你的项目构建输出路径调整
+        asset_path: /*.jar  # 根据你的项目构建输出路径调整
         asset_name: jdread-downloader.jar  # 自定义文件名
         asset_content_type: application/java-archive
       
