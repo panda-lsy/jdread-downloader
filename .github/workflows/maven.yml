@@ -33,7 +33,7 @@ jobs:
       id: new_release
       uses: softprops/action-gh-release@v2.0.8
       with:
-        name: latest
+        tag: latest
         make_latest: true
       
 
