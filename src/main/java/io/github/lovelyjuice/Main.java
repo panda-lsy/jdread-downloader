@@ -1,10 +1,10 @@
 package io.github.lovelyjuice;
 
-from selenium import webdriver
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -16,13 +16,9 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-	webdriver.ChromeOptions chromeOptions = new webdriver.ChromeOptions();
-		chromeOptions.addArguments("--remote-allow-origins=*");//解决 403 出错问题
-		chromeOptions.setExperimentalOption("prefs", chromePreferences);
-		if (chromeExeFile != null) {
-			chromeOptions.setBinary(chromeExeFile);
-		}
-        ChromeDriver driver = new ChromeDriver(chromeOptions);
+	ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        ChromeDriver driver = new ChromeDriver(options);
         driver.get("https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Febooks.jd.com%2Fbookshelf");
         System.out.println("操作浏览器登录并跳转到书籍第一页后，输入任意字符开始，输入q退出：");
         while (!(new Scanner(System.in).next()).equals("q")) {
