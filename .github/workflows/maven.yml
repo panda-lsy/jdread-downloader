@@ -29,12 +29,19 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: List all .jar files
+      id: list-jars
+      run: |
+        echo "Listing all .jar files"
+        ls -1 target/*.jar
+        JAR_FILES=$(ls -1 target/*.jar)
+        echo "::set-output name=jar_files::$JAR_FILES"
     - name: create github release
       uses: softprops/action-gh-release@v2.0.8
       with:
         tag_name: latest
         name: ${{github.ref_name}}
-        files: ${{ github.workspace }}/target/jdread-downloader-1.0-SNAPSHOT.jar
+        files: ${{ steps.list-jars.outputs.jar_files }}
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
