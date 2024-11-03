@@ -34,7 +34,7 @@
                 </descriptorRefs>
                 <archive>
                     <manifest>
-                        <mainClass>Main</mainClass> <!-- 替换为你的主类 -->
+                        <mainClass>io.github.lovelyjuice.Main</mainClass> <!-- 替换为你的主类 -->
                     </manifest>
                 </archive>
             </configuration>
