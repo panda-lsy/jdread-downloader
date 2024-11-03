@@ -21,7 +21,7 @@ public class Main {
 			chromeOptions.setBinary(chromeExeFile);
 		}
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
+        ChromeDriver driver = new ChromeDriver(chromeOptions);
         driver.get("https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Febooks.jd.com%2Fbookshelf");
         System.out.println("操作浏览器登录并跳转到书籍第一页后，输入任意字符开始，输入q退出：");
         while (!(new Scanner(System.in).next()).equals("q")) {
