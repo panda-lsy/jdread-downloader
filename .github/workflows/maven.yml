@@ -34,7 +34,7 @@ jobs:
       with:
         tag_name: latest
         name: ${{github.ref_name}}
-        files: $GITHUB_WORKSPACE/*.jar
+        files: ${{ github.workspace }}/jdread-downloader/1.0-SNAPSHOT.jar
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
