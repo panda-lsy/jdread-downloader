@@ -14,8 +14,14 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
+        ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*");//解决 403 出错问题
+		chromeOptions.setExperimentalOption("prefs", chromePreferences);
+		if (chromeExeFile != null) {
+			chromeOptions.setBinary(chromeExeFile);
+		}
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        ChromeDriver driver = new ChromeDriver();
+        ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
         driver.get("https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Febooks.jd.com%2Fbookshelf");
         System.out.println("操作浏览器登录并跳转到书籍第一页后，输入任意字符开始，输入q退出：");
         while (!(new Scanner(System.in).next()).equals("q")) {
